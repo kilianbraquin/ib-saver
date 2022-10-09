@@ -1,3 +1,4 @@
+import "@/styles/globals.css";
 import * as Fathom from "fathom-client";
 import Head from "next/head";
 import { useRouter } from "next/router";
