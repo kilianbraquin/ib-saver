@@ -8,10 +8,22 @@ export const HomepageTemplate: FC = () => {
       <header>
         <div>IB Saver</div>
       </header>
-      <h1>Application de téléchargement de vidéos Twitter</h1>
+      <h1>Téléchargement de vidéos Twitter</h1>
       <p>
-        IB Saver est une application permettant de télécharger des vidéos
-        Twitter
+        Bienvenue,
+        <br />
+        IB Saver est un service permettant de télécharger les vidéos d’un tweet.
+        <br />
+        Pour cela, vous devez indiquer le lien du tweet
+        <br />(<b>https://twitter.com/lnstantFoot/status/1575981122747781120</b>
+        )<br />
+        ou son identifiant uniquement
+        <br />
+        (https://twitter.com/lnstantFoot/status/
+        <b>1575981122747781120</b>).
+        <br />
+        <br />
+        Bonne utilisation !
       </p>
       <FormSearchTweet />
       <footer>
