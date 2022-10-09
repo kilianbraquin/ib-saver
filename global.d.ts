@@ -5,3 +5,8 @@ declare namespace NodeJS {
     NEXT_PUBLIC_DOMAIN_NAME: string;
   }
 }
+
+declare module "*.svg" {
+  const content: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
+  export default content;
+}
