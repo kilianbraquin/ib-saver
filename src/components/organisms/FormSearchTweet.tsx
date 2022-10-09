@@ -1,3 +1,4 @@
+import * as Fathom from "fathom-client";
 import { FC, FormEventHandler, useCallback, useState } from "react";
 
 export const FormSearchTweet: FC = () => {
@@ -5,6 +6,7 @@ export const FormSearchTweet: FC = () => {
   const onSubmit = useCallback<FormEventHandler<HTMLFormElement>>(
     (event) => {
       event.preventDefault();
+      Fathom.trackGoal("B7NFDGBI", 0);
       console.log(inputValue);
     },
     [inputValue]
