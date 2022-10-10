@@ -1,10 +1,13 @@
 import { Box } from "@/components/atoms/Box";
 import { Title } from "@/components/atoms/Title";
 import { FormSearchTweet } from "@/components/organisms/FormSearchTweet";
+import { useTweetInfo } from "@/hooks/useTweetInfo";
 import Link from "next/link";
 import { FC } from "react";
 
 export const HomepageTemplate: FC = () => {
+  const { setTweetId } = useTweetInfo();
+
   return (
     <div className="container mx-auto flex flex-col items-center">
       <header className="py-4">
@@ -35,7 +38,7 @@ export const HomepageTemplate: FC = () => {
             Bonne utilisation !
           </p>
         </Box>
-        <FormSearchTweet />
+        <FormSearchTweet onSubmit={setTweetId} />
       </main>
       <footer className="pb-safe">
         <p>

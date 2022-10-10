@@ -3,20 +3,40 @@ import ChevronRight from "@/icons/chevron-right.svg";
 import * as Fathom from "fathom-client";
 import { FC, FormEventHandler, useCallback, useState } from "react";
 
-export const FormSearchTweet: FC = () => {
+export type FormSearchTweetProps = {
+  onSubmit?: (tweetId: string) => void;
+};
+
+export const FormSearchTweet: FC<FormSearchTweetProps> = ({ onSubmit }) => {
   const [inputValue, setInputValue] = useState("");
-  const onSubmit = useCallback<FormEventHandler<HTMLFormElement>>(
+  const handleOnSubmit = useCallback<FormEventHandler<HTMLFormElement>>(
     (event) => {
       event.preventDefault();
-      Fathom.trackGoal("B7NFDGBI", 0);
-      console.log(inputValue);
+      if (onSubmit) {
+        try {
+          const value = inputValue.trim();
+          let tweetIdentifier: string;
+          if (/^[0-9]+$/.test(inputValue)) tweetIdentifier = value;
+          else {
+            const url = new URL(value);
+            tweetIdentifier = url.pathname.split("/").pop();
+            if (!/^[0-9]+$/.test(tweetIdentifier)) {
+              throw new Error("Incorrect link");
+            }
+          }
+          Fathom.trackGoal("B7NFDGBI", 0);
+          onSubmit(tweetIdentifier);
+        } catch {
+          alert("Vous avez entré un identifiant ou un lien incorrect");
+        }
+      }
     },
-    [inputValue]
+    [inputValue, onSubmit]
   );
 
   return (
     <Box className="absolute z-10 -bottom-8 left-4 w-full">
-      <form className="flex items-center space-x-4" onSubmit={onSubmit}>
+      <form className="flex items-center space-x-4" onSubmit={handleOnSubmit}>
         <input
           type="text"
           className="border-b border-black flex-1 rounded-none"
