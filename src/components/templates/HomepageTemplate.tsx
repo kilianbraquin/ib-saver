@@ -5,7 +5,15 @@ import { useTweetInfo } from "@/hooks/useTweetInfo";
 import Link from "next/link";
 import { FC } from "react";
 
-export const HomepageTemplate: FC = () => {
+export type HomepageTemplateProps = {
+  title: string;
+  introduction: string;
+};
+
+export const HomepageTemplate: FC<HomepageTemplateProps> = ({
+  title,
+  introduction,
+}) => {
   const { setTweetId } = useTweetInfo();
 
   return (
@@ -15,28 +23,11 @@ export const HomepageTemplate: FC = () => {
       </header>
       <main className="relative -translate-x-2 mb-16 max-w-full">
         <Box className="pb-12">
-          <Title>Téléchargement de medias Twitter</Title>
-          <p className="break-words">
-            Bienvenue,
-            <br />
-            IB Saver est un service permettant de télécharger les médias d’un
-            tweet.
-            <br />
-            Pour cela, vous devez indiquer le lien du tweet
-            <br />
-            <span className="text-darkGray">
-              <b>https://twitter.com/Drebae_/status/1574454379901423618</b>
-            </span>
-            <br />
-            ou son identifiant uniquement
-            <br />
-            <span className="text-darkGray">
-              https://twitter.com/Drebae_/status/<b>1574454379901423618</b>
-            </span>
-            <br />
-            <br />
-            Bonne utilisation !
-          </p>
+          <Title>{title}</Title>
+          <div
+            className="break-words"
+            dangerouslySetInnerHTML={{ __html: introduction }}
+          />
         </Box>
         <FormSearchTweet onSubmit={setTweetId} />
       </main>
