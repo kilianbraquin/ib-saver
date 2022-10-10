@@ -13,7 +13,7 @@ export const Box: FC<PropsWithChildren<BoxProps>> = ({
     <div
       className={clsx(
         className,
-        "border-2 border-black rounded inline-block shadow-box max-w-sm p-4 bg-white"
+        "border-2 border-black rounded inline-block shadow-box w-full max-w-lg p-4 bg-white"
       )}
     >
       {children}

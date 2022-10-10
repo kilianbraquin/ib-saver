@@ -6,29 +6,29 @@ import { FC } from "react";
 
 export const HomepageTemplate: FC = () => {
   return (
-    <div className="container mx-auto flex flex-col items-center pb-safe bg-blue">
+    <div className="container mx-auto flex flex-col items-center">
       <header className="py-4">
         <div className="font-extrabold text-2xl">IB Saver</div>
       </header>
-      <main className="relative mr-4 mb-16">
+      <main className="relative -translate-x-2 mb-16 max-w-full">
         <Box className="pb-12">
-          <Title>Téléchargement de vidéos Twitter</Title>
-          <p className="whitespace-normal">
+          <Title>Téléchargement de medias Twitter</Title>
+          <p className="break-words">
             Bienvenue,
             <br />
-            IB Saver est un service permettant de télécharger les vidéos d’un
+            IB Saver est un service permettant de télécharger les médias d’un
             tweet.
             <br />
             Pour cela, vous devez indiquer le lien du tweet
             <br />
             <span className="text-darkGray">
-              <b>https://twitter.com/lnstantFoot/status/ 1575981122747781120</b>
+              <b>https://twitter.com/Drebae_/status/1574454379901423618</b>
             </span>
             <br />
             ou son identifiant uniquement
             <br />
             <span className="text-darkGray">
-              https://twitter.com/lnstantFoot/status/ <b>1575981122747781120</b>
+              https://twitter.com/Drebae_/status/<b>1574454379901423618</b>
             </span>
             <br />
             <br />
@@ -37,7 +37,7 @@ export const HomepageTemplate: FC = () => {
         </Box>
         <FormSearchTweet />
       </main>
-      <footer>
+      <footer className="pb-safe">
         <p>
           Made by{" "}
           <Link href="#">

@@ -20,7 +20,7 @@ export const FormSearchTweet: FC = () => {
         <input
           type="text"
           className="border-b border-black flex-1 rounded-none"
-          placeholder="Lien de la vidéo"
+          placeholder="Lien du tweet"
           value={inputValue}
           onChange={(e) => setInputValue(e.currentTarget.value)}
           required
