@@ -10,13 +10,15 @@ module.exports = {
     colors: {
       black: "black",
       white: "white",
-      blue: "#1B9CFC",
+      blue: "#16a085",
       darkGray: "#2C3A47",
     },
     fontFamily: {
-      sans: "Gelo, sans-serif",
+      sans: "zeitung-micro, sans-serif",
+      logo: "bungee, sans-serif",
     },
     boxShadow: {
+      button: "2px 2px 0 0 #000",
       box: "4px 4px 0 0 #000",
     },
     extend: {},

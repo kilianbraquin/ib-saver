@@ -46,7 +46,7 @@ export const FormSearchTweet: FC<FormSearchTweetProps> = ({ onSubmit }) => {
         />
         <button
           type="submit"
-          className="w-8 h-8 border border-black rounded-full"
+          className="bg-white w-8 h-8 border border-black rounded-md shadow-button"
         >
           <ChevronRightIcon
             className="text-black mx-auto translate-x-px"

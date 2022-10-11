@@ -20,7 +20,7 @@ export const HomepageTemplate: FC<HomepageTemplateProps> = ({
   return (
     <div className="container mx-auto flex flex-col items-center">
       <header className="py-4">
-        <div className="font-extrabold text-2xl">IB Saver</div>
+        <div className="text-4xl font-logo">IB Saver</div>
       </header>
       <main className="relative -translate-x-2 mb-16 w-full min-w-[288px] max-w-lg">
         <Box className="pb-12">
