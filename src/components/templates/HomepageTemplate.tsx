@@ -34,8 +34,8 @@ export const HomepageTemplate: FC<HomepageTemplateProps> = ({
       </main>
       <footer className="pb-safe">
         <p>
-          Made by{" "}
-          <Link href="#">
+          Créé par{" "}
+          <Link href="https://www.kbraquin.com">
             <a className="font-bold">Kilian Braquin</a>
           </Link>
         </p>
