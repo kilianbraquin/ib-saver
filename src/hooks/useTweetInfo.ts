@@ -1,4 +1,5 @@
 import axios from "axios";
+import * as Fathom from "fathom-client";
 import { useCallback, useEffect, useState } from "react";
 
 export type TweetInfo = {
@@ -29,6 +30,7 @@ export const useTweetInfo = () => {
 
   useEffect(() => {
     if (tweetId) {
+      Fathom.trackGoal("IZGPT0ZD", 0);
       axios
         .get<TweetInfo>(process.env.NEXT_PUBLIC_WORKER_URL, {
           params: { tweetId },

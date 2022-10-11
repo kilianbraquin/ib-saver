@@ -1,6 +1,5 @@
 import { Box } from "@/components/atoms/Box";
 import ChevronRightIcon from "@/icons/chevron-right.svg";
-import * as Fathom from "fathom-client";
 import { FC, FormEventHandler, useCallback, useState } from "react";
 
 export type FormSearchTweetProps = {
@@ -24,7 +23,6 @@ export const FormSearchTweet: FC<FormSearchTweetProps> = ({ onSubmit }) => {
               throw new Error("Incorrect link");
             }
           }
-          Fathom.trackGoal("B7NFDGBI", 0);
           onSubmit(tweetIdentifier);
         } catch {
           alert("Vous avez entré un identifiant ou un lien incorrect");
@@ -38,6 +36,7 @@ export const FormSearchTweet: FC<FormSearchTweetProps> = ({ onSubmit }) => {
     <Box className="absolute z-10 -bottom-8 left-4 w-full">
       <form className="flex items-center space-x-4" onSubmit={handleOnSubmit}>
         <input
+          autoComplete="off"
           type="text"
           className="border-b border-black flex-1 rounded-none"
           placeholder="Lien du tweet"
