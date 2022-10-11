@@ -39,7 +39,7 @@ export const MediaInfo: FC<MediaInfoProps> = ({ media }) => {
               <li key={variant.url}>
                 <Link href={variant.url}>
                   <a
-                    className="text-blue font-bold hover:underline flex items-center space-x-1"
+                    className="text-primary font-bold hover:underline flex items-center space-x-1"
                     target="_blank"
                   >
                     <LinkIcon width={20} />
@@ -69,7 +69,7 @@ export const MediaInfo: FC<MediaInfoProps> = ({ media }) => {
         <div>
           <Link href={clearedVariants[0].url}>
             <a
-              className="text-blue font-bold hover:underline flex items-center space-x-1"
+              className="text-primary font-bold hover:underline flex items-center space-x-1"
               target="_blank"
             >
               <LinkIcon width={20} />
@@ -96,7 +96,7 @@ export const MediaInfo: FC<MediaInfoProps> = ({ media }) => {
         <div>
           <Link href={media.url}>
             <a
-              className="text-blue font-bold hover:underline flex items-center space-x-1"
+              className="text-primary font-bold hover:underline flex items-center space-x-1"
               target="_blank"
             >
               <LinkIcon width={20} />

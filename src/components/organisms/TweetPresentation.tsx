@@ -38,7 +38,7 @@ export const TweetPresentation: FC<TweetPresentationProps> = ({
           <div>
             <Link href={`https://twitter.com/${tweetInfo.author}`}>
               <a
-                className="text-blue font-bold"
+                className="text-primary font-bold"
                 target="_blank"
               >{`@${tweetInfo.author}`}</a>
             </Link>

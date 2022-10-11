@@ -10,11 +10,10 @@ module.exports = {
     colors: {
       black: "black",
       white: "white",
-      blue: "#16a085",
-      darkGray: "#2C3A47",
+      primary: "#16a085",
     },
     fontFamily: {
-      sans: "zeitung-micro, sans-serif",
+      main: "zeitung-micro, sans-serif",
       logo: "bungee, sans-serif",
     },
     boxShadow: {
