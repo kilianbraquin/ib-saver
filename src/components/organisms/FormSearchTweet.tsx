@@ -1,5 +1,5 @@
 import { Box } from "@/components/atoms/Box";
-import ChevronRight from "@/icons/chevron-right.svg";
+import ChevronRightIcon from "@/icons/chevron-right.svg";
 import * as Fathom from "fathom-client";
 import { FC, FormEventHandler, useCallback, useState } from "react";
 
@@ -49,7 +49,7 @@ export const FormSearchTweet: FC<FormSearchTweetProps> = ({ onSubmit }) => {
           type="submit"
           className="w-8 h-8 border border-black rounded-full"
         >
-          <ChevronRight
+          <ChevronRightIcon
             className="text-black mx-auto translate-x-px"
             width={24}
           />
