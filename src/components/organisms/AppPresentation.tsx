@@ -20,25 +20,25 @@ export const AppPresentation: FC = () => {
           className="font-bold text-primary text-start"
           onClick={() => {
             setSearchBarValue(
-              "https://twitter.com/Drebae_/status/1574454379901423618"
+              "https://twitter.com/T1LoL/status/1588818401140539392"
             );
-            router.push("/?id=" + "1574454379901423618");
+            router.push("/?id=" + "1588818401140539392");
           }}
         >
-          https://twitter.com/Drebae_/status/1574454379901423618
+          https://twitter.com/T1LoL/status/1588818401140539392
         </button>
         <br />
         Ou son identifiant uniquement
         <br />
-        https://twitter.com/Drebae_/status/
+        https://twitter.com/T1LoL/status/
         <button
           className="font-bold text-primary text-start"
           onClick={() => {
-            setSearchBarValue("1574454379901423618");
-            router.push("/?id=" + "1574454379901423618");
+            setSearchBarValue("1588818401140539392");
+            router.push("/?id=" + "1588818401140539392");
           }}
         >
-          1574454379901423618
+          1588818401140539392
         </button>
       </p>
     </div>

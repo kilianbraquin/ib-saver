@@ -24,7 +24,7 @@ export const Header: FC = () => {
         <Link href="/history">
           <ClockRotateLeft className="fill-primary" height={26} />
         </Link>
-        <Link href="#">
+        <Link href="/bookmarks">
           <Bookmark className="fill-primary" height={26} />
         </Link>
         <button onClick={toggleThemeMode}>

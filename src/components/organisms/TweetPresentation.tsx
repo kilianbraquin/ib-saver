@@ -1,29 +1,42 @@
 import { MediaInfo } from "@/components/molecules/MediaInfo";
+import { useTweetBookmarks } from "@/hooks/useTweetBookmarks";
 import { useTweetHistory } from "@/hooks/useTweetHistory";
 import { TweetInfo } from "@/hooks/useTweetInfo";
 import BookmarkRegular from "@fontawesome/regular/bookmark.svg";
 import TrashCanClock from "@fontawesome/regular/trash-can-clock.svg";
 import BadgeCheck from "@fontawesome/solid/badge-check.svg";
+import BookmarkSolid from "@fontawesome/solid/bookmark.svg";
 import Image from "next/image";
 import Link from "next/link";
-import { FC, useMemo } from "react";
+import { FC, useCallback, useEffect, useMemo, useState } from "react";
 
 export type TweetPresentationProps = {
   tweetInfo: TweetInfo;
   displayRemoveFromHistory?: boolean;
   onRemoveFromHistory?: (tweetId) => void;
+  onToggleBookmark?: (tweetId) => void;
 };
 
 export const TweetPresentation: FC<TweetPresentationProps> = ({
   tweetInfo,
   displayRemoveFromHistory = false,
   onRemoveFromHistory,
+  onToggleBookmark,
 }) => {
+  const { isBookmarked, toggleBookmark } = useTweetBookmarks();
   const { removeFromHistory } = useTweetHistory();
+
+  const [bookmarkStatus, setBookmarkStatus] = useState(false);
   const userProfileUrl = useMemo(
     () => `https://twitter.com/${tweetInfo.user.username}`,
     [tweetInfo]
   );
+
+  const refreshBookmarkStatus = useCallback(() => {
+    setBookmarkStatus(isBookmarked(tweetInfo.id));
+  }, [isBookmarked, tweetInfo.id]);
+
+  useEffect(() => refreshBookmarkStatus(), [refreshBookmarkStatus]);
 
   return (
     <>
@@ -68,8 +81,18 @@ export const TweetPresentation: FC<TweetPresentationProps> = ({
               <TrashCanClock className="fill-primary" height={26} />
             </button>
           )}
-          <button>
-            <BookmarkRegular className="fill-primary" height={26} />
+          <button
+            onClick={() => {
+              toggleBookmark(tweetInfo.id);
+              refreshBookmarkStatus();
+              if (onToggleBookmark) onToggleBookmark(tweetInfo.id);
+            }}
+          >
+            {bookmarkStatus ? (
+              <BookmarkSolid className="fill-primary" height={26} />
+            ) : (
+              <BookmarkRegular className="fill-primary" height={26} />
+            )}
           </button>
         </div>
       </div>
