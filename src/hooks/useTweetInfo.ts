@@ -1,3 +1,4 @@
+import { useTweetHistory } from "@/hooks/useTweetHistory";
 import axios from "axios";
 import * as Fathom from "fathom-client";
 import { useCallback, useEffect, useState } from "react";
@@ -27,6 +28,7 @@ export type TweetInfo = {
 };
 
 export const useTweetInfo = () => {
+  const { addToHistory } = useTweetHistory();
   const [tweetId, setTweetId] = useState<string>();
   const [tweetInfo, setTweetInfo] = useState<TweetInfo>();
 
@@ -42,11 +44,12 @@ export const useTweetInfo = () => {
           params: { tweetId },
         })
         .then((res) => setTweetInfo(res.data))
+        .then(() => addToHistory(tweetId))
         .catch(() => setTweetInfo(undefined));
     } else {
       setTweetInfo(undefined);
     }
-  }, [tweetId]);
+  }, [addToHistory, tweetId]);
 
   return {
     tweetId,

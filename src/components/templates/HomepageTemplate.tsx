@@ -5,15 +5,7 @@ import { useTweetInfo } from "@/hooks/useTweetInfo";
 import { useSearchParams } from "next/navigation";
 import { FC, useContext, useEffect } from "react";
 
-export type HomepageTemplateProps = {
-  title: string;
-  introduction: string;
-};
-
-export const HomepageTemplate: FC<HomepageTemplateProps> = ({
-  title,
-  introduction,
-}) => {
+export const HomepageTemplate: FC = () => {
   const { setSearchBarValue } = useContext(SearchBarContext);
   const { tweetInfo, setTweetId, resetTweetId } = useTweetInfo();
   const searchParams = useSearchParams();
@@ -28,13 +20,6 @@ export const HomepageTemplate: FC<HomepageTemplateProps> = ({
     }
   }, [resetTweetId, searchParams, setSearchBarValue, setTweetId]);
 
-  return (
-    <>
-      {!tweetInfo ? (
-        <AppPresentation />
-      ) : (
-        <TweetPresentation tweetInfo={tweetInfo} />
-      )}
-    </>
-  );
+  if (!tweetInfo) return <AppPresentation />;
+  else return <TweetPresentation tweetInfo={tweetInfo} />;
 };

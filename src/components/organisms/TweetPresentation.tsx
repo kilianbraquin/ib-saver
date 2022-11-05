@@ -1,6 +1,8 @@
 import { MediaInfo } from "@/components/molecules/MediaInfo";
+import { useTweetHistory } from "@/hooks/useTweetHistory";
 import { TweetInfo } from "@/hooks/useTweetInfo";
 import BookmarkRegular from "@fontawesome/regular/bookmark.svg";
+import TrashCanClock from "@fontawesome/regular/trash-can-clock.svg";
 import BadgeCheck from "@fontawesome/solid/badge-check.svg";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,11 +10,16 @@ import { FC, useMemo } from "react";
 
 export type TweetPresentationProps = {
   tweetInfo: TweetInfo;
+  displayRemoveFromHistory?: boolean;
+  onRemoveFromHistory?: (tweetId) => void;
 };
 
 export const TweetPresentation: FC<TweetPresentationProps> = ({
   tweetInfo,
+  displayRemoveFromHistory = false,
+  onRemoveFromHistory,
 }) => {
+  const { removeFromHistory } = useTweetHistory();
   const userProfileUrl = useMemo(
     () => `https://twitter.com/${tweetInfo.user.username}`,
     [tweetInfo]
@@ -50,8 +57,20 @@ export const TweetPresentation: FC<TweetPresentationProps> = ({
             </div>
           </div>
         </div>
-        <div>
-          <BookmarkRegular className="fill-primary" height={26} />
+        <div className="flex space-x-4">
+          {displayRemoveFromHistory && (
+            <button
+              onClick={() => {
+                removeFromHistory(tweetInfo.id);
+                if (onRemoveFromHistory) onRemoveFromHistory(tweetInfo.id);
+              }}
+            >
+              <TrashCanClock className="fill-primary" height={26} />
+            </button>
+          )}
+          <button>
+            <BookmarkRegular className="fill-primary" height={26} />
+          </button>
         </div>
       </div>
       <div className="px-4">
@@ -59,13 +78,17 @@ export const TweetPresentation: FC<TweetPresentationProps> = ({
           {tweetInfo.text}
         </p>
       </div>
-      <ul className="flex flex-wrap items-start gap-y-4 p-4">
-        {tweetInfo.media.map((media) => (
-          <li className="w-full md:w-1/2" key={media.media_key}>
-            <MediaInfo media={media} />
-          </li>
-        ))}
-      </ul>
+      {tweetInfo.media.length !== 0 ? (
+        <ul className="flex flex-wrap items-start gap-y-4 p-4">
+          {tweetInfo.media.map((media) => (
+            <li className="w-full md:w-1/2" key={media.media_key}>
+              <MediaInfo media={media} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div className="h-4" />
+      )}
     </>
   );
 };

@@ -1,11 +1,12 @@
 import { SearchBarContext } from "@/contexts/SearchBarContext";
 import MagnifyingGlass from "@fontawesome/regular/magnifying-glass.svg";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { FC, useContext } from "react";
 
 export const AppPresentation: FC = () => {
   const { setSearchBarValue } = useContext(SearchBarContext);
   const router = useRouter();
+
   return (
     <div className="absolute left-1/2 flex h-full w-full -translate-x-1/2 items-center justify-center">
       <MagnifyingGlass

@@ -7,8 +7,8 @@ export const useThemeMode = () => {
 
   useEffect(() => {
     if (
-      localStorage.theme === ThemeMode.DARK ||
-      (!("theme" in localStorage) &&
+      localStorage.getItem("theme") === ThemeMode.DARK ||
+      (!localStorage.getItem("theme") &&
         window.matchMedia("(prefers-color-scheme: dark)").matches)
     ) {
       setThemeMode(ThemeMode.DARK);
@@ -19,12 +19,12 @@ export const useThemeMode = () => {
 
   useEffect(() => {
     if (themeMode === ThemeMode.DARK) {
-      localStorage.theme = ThemeMode.DARK;
+      localStorage.setItem("theme", ThemeMode.DARK);
       document.documentElement.classList.add("dark");
       document.documentElement.style.backgroundColor =
         tailwindColors["side-dark"];
     } else {
-      localStorage.theme = ThemeMode.LIGHT;
+      localStorage.setItem("theme", ThemeMode.LIGHT);
       document.documentElement.classList.remove("dark");
       document.documentElement.style.backgroundColor =
         tailwindColors["side-light"];

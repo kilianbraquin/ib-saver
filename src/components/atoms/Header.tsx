@@ -21,7 +21,7 @@ export const Header: FC = () => {
         <IBSaverLogo />
       </Link>
       <div className="flex space-x-4 items-center">
-        <Link href="#">
+        <Link href="/history">
           <ClockRotateLeft className="fill-primary" height={26} />
         </Link>
         <Link href="#">

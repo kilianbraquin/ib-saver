@@ -1,6 +1,6 @@
 import { SearchBarContext } from "@/contexts/SearchBarContext";
 import CircleArrowRight from "@fontawesome/regular/circle-arrow-right.svg";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { FC, FormEventHandler, useCallback, useContext } from "react";
 
 export const SearchBar: FC = () => {
