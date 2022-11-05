@@ -5,6 +5,12 @@ import { useCallback, useEffect, useState } from "react";
 export type TweetInfo = {
   id: string;
   author: string;
+  user: {
+    name: string;
+    username: string;
+    profile_image_url: string;
+    verified: boolean;
+  };
   date: string;
   text: string;
   media: {

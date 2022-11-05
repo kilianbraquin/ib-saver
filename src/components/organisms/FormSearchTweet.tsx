@@ -34,7 +34,7 @@ export const FormSearchTweet: FC<FormSearchTweetProps> = ({ onSubmit }) => {
 
   return (
     <Box className="absolute z-10 -bottom-8 left-4 w-full">
-      <form className="flex items-center space-x-4" onSubmit={handleOnSubmit}>
+      <form className="flex items-center gap-x-4" onSubmit={handleOnSubmit}>
         <input
           autoComplete="off"
           type="text"

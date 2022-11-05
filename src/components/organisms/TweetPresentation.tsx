@@ -1,6 +1,8 @@
-import { SubTitle, Title } from "@/components/atoms/Title";
 import { MediaInfo } from "@/components/molecules/MediaInfo";
 import { TweetInfo } from "@/hooks/useTweetInfo";
+import BookmarkRegular from "@fontawesome/regular/bookmark.svg";
+import BadgeCheck from "@fontawesome/solid/badge-check.svg";
+import Image from "next/image";
 import Link from "next/link";
 import { FC, useMemo } from "react";
 
@@ -11,63 +13,55 @@ export type TweetPresentationProps = {
 export const TweetPresentation: FC<TweetPresentationProps> = ({
   tweetInfo,
 }) => {
-  const timeString = useMemo(
-    () =>
-      new Date(tweetInfo.date).toLocaleTimeString("fr-FR", {
-        hour: "2-digit",
-        minute: "2-digit",
-      }),
-    [tweetInfo.date]
-  );
-  const dateString = useMemo(
-    () =>
-      new Date(tweetInfo.date).toLocaleDateString("fr-FR", {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      }),
-    [tweetInfo.date]
+  const userProfileUrl = useMemo(
+    () => `https://twitter.com/${tweetInfo.user.username}`,
+    [tweetInfo]
   );
 
   return (
     <>
-      <Title>Informations du tweet</Title>
-      <ul className="mb-3 space-y-1">
-        <li className="flex justify-between">
-          <div className="font-bold">Auteur</div>
+      <div className="flex items-center justify-between gap-x-2 p-4">
+        <div className="flex gap-x-4">
+          <Link href={userProfileUrl} target="_blank">
+            <Image
+              className="self-start rounded-full"
+              src={tweetInfo.user.profile_image_url}
+              alt="profile image url"
+              height={48}
+              width={48}
+            />
+          </Link>
           <div>
-            <Link
-              className="text-primary font-bold"
-              href={`https://twitter.com/${tweetInfo.author}`}
-              target="_blank"
-            >
-              {`@${tweetInfo.author}`}
-            </Link>
+            <div className="font-bold text-main-text-light hover:underline dark:text-main-text-dark">
+              <Link href={userProfileUrl} target="_blank">
+                {tweetInfo.user.name}
+                {tweetInfo.user.verified && (
+                  <BadgeCheck
+                    className="ml-1 inline -translate-y-px fill-primary"
+                    width={18}
+                  />
+                )}
+              </Link>
+            </div>
+            <div className="text-body-text-light dark:text-body-text-dark">
+              <Link href={userProfileUrl} target="_blank">
+                @{tweetInfo.user.username}
+              </Link>
+            </div>
           </div>
-        </li>
-        <li className="flex justify-between">
-          <div className="font-bold">Date</div>
-          <div>
-            <Link href="#">
-              <time
-                dateTime={tweetInfo.date}
-              >{`${timeString} · ${dateString}`}</time>
-            </Link>
-          </div>
-        </li>
-        <li>
-          <div className="font-bold">Texte</div>
-          <div>
-            <Link href="#">
-              <p>{tweetInfo.text}</p>
-            </Link>
-          </div>
-        </li>
-      </ul>
-      <SubTitle>Medias du tweet</SubTitle>
-      <ul className="space-y-2">
+        </div>
+        <div>
+          <BookmarkRegular className="fill-primary" height={26} />
+        </div>
+      </div>
+      <div className="px-4">
+        <p className="text-body-text-light dark:text-body-text-dark">
+          {tweetInfo.text}
+        </p>
+      </div>
+      <ul className="flex flex-wrap items-start gap-y-4 p-4">
         {tweetInfo.media.map((media) => (
-          <li key={media.media_key}>
+          <li className="w-full md:w-1/2" key={media.media_key}>
             <MediaInfo media={media} />
           </li>
         ))}

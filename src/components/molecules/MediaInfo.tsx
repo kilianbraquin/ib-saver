@@ -1,5 +1,5 @@
 import { TweetInfo } from "@/hooks/useTweetInfo";
-import LinkIcon from "@/icons/link.svg";
+import Download from "@fontawesome/regular/download.svg";
 import Image from "next/image";
 import Link from "next/link";
 import { FC, useMemo } from "react";
@@ -22,19 +22,19 @@ export const MediaInfo: FC<MediaInfoProps> = ({ media }) => {
   if (media.type === "video")
     return (
       <div className="flex space-x-3">
+        <Image
+          className="border-2 border-border-light dark:border-border-dark rounded-md self-stretch"
+          src={media.preview_image_url}
+          alt="media miniature"
+          width={140}
+          height={80}
+          unoptimized
+        />
         <div>
-          <Image
-            className="border-2 border-black rounded-md mb-1"
-            src={media.preview_image_url}
-            alt="media miniature"
-            width={140}
-            height={80}
-            unoptimized
-          />
-          <div className="font-bold text-center">Vidéo</div>
-        </div>
-        <div>
-          <ul>
+          <div className="font-bold mb-0.5 text-main-text-light dark:text-main-text-dark">
+            Vidéo
+          </div>
+          <ul className="space-y-px">
             {clearedVariants.map((variant, index) => (
               <li key={variant.url}>
                 <Link
@@ -42,7 +42,7 @@ export const MediaInfo: FC<MediaInfoProps> = ({ media }) => {
                   href={variant.url}
                   target="_blank"
                 >
-                  <LinkIcon width={20} />
+                  <Download className="fill-primary" width={18} />
                   <span>{labels[index]}</span>
                 </Link>
               </li>
@@ -54,24 +54,24 @@ export const MediaInfo: FC<MediaInfoProps> = ({ media }) => {
   else if (media.type === "animated_gif")
     return (
       <div className="flex space-x-3">
+        <Image
+          className="border-2 border-border-light dark:border-border-dark rounded-md self-stretch"
+          src={media.preview_image_url}
+          alt="media miniature"
+          width={140}
+          height={80}
+          unoptimized
+        />
         <div>
-          <Image
-            className="border-2 border-black rounded-md mb-1"
-            src={media.preview_image_url}
-            alt="media miniature"
-            width={140}
-            height={80}
-            unoptimized
-          />
-          <div className="font-bold text-center">GIF Animé</div>
-        </div>
-        <div>
+          <div className="font-bold mb-0.5 text-main-text-light dark:text-main-text-dark">
+            GIF Animé
+          </div>
           <Link
             className="text-primary font-bold hover:underline flex items-center space-x-1"
             target="_blank"
             href={clearedVariants[0].url}
           >
-            <LinkIcon width={20} />
+            <Download className="fill-primary" width={18} />
             <span>{defaultLabel}</span>
           </Link>
         </div>
@@ -80,24 +80,24 @@ export const MediaInfo: FC<MediaInfoProps> = ({ media }) => {
   else if (media.type === "photo")
     return (
       <div className="flex space-x-3">
+        <Image
+          className="border-2 border-border-light dark:border-border-dark rounded-md self-stretch"
+          src={media.url}
+          alt="media miniature"
+          width={140}
+          height={80}
+          unoptimized
+        />
         <div>
-          <Image
-            className="border-2 border-black rounded-md mb-1"
-            src={media.url}
-            alt="media miniature"
-            width={140}
-            height={80}
-            unoptimized
-          />
-          <div className="font-bold text-center">Photo</div>
-        </div>
-        <div>
+          <div className="font-bold mb-0.5 text-main-text-light dark:text-main-text-dark">
+            Photo
+          </div>
           <Link
             className="text-primary font-bold hover:underline flex items-center space-x-1"
             href={media.url}
             target="_blank"
           >
-            <LinkIcon width={20} />
+            <Download className="fill-primary" width={18} />
             <span>{defaultLabel}</span>
           </Link>
         </div>

@@ -1,5 +1,5 @@
 import { ThemeMode, ThemeModeContext } from "@/contexts/ThemeModeContext";
-import IBSaverIcon from "@/icons/ib-saver-logo.svg";
+import IBSaverLogo from "@/icons/ib-saver-logo.svg";
 import Bookmark from "@fontawesome/regular/bookmark.svg";
 import ClockRotateLeft from "@fontawesome/regular/clock-rotate-left.svg";
 import Moon from "@fontawesome/regular/moon.svg";
@@ -18,7 +18,7 @@ export const Header: FC = () => {
   return (
     <header className="flex items-center justify-between border-b p-4 border-border-light dark:border-border-dark">
       <Link href={"/"}>
-        <IBSaverIcon />
+        <IBSaverLogo />
       </Link>
       <div className="flex space-x-4 items-center">
         <Link href="#">
