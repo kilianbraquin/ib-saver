@@ -1,5 +1,7 @@
 import { ThemeMode } from "@/contexts/ThemeModeContext";
 import { useCallback, useEffect, useState } from "react";
+import resolveConfig from "tailwindcss/resolveConfig";
+import tailwindConfig from "../../tailwind.config.js";
 
 export const useThemeMode = () => {
   const [themeMode, setThemeMode] = useState(ThemeMode.LIGHT);
@@ -17,12 +19,17 @@ export const useThemeMode = () => {
   }, []);
 
   useEffect(() => {
+    const config = resolveConfig(tailwindConfig);
     if (themeMode === ThemeMode.DARK) {
       localStorage.theme = ThemeMode.DARK;
       document.documentElement.classList.add("dark");
+      document.documentElement.style.backgroundColor =
+        config.theme.colors["side-dark"];
     } else {
       localStorage.theme = ThemeMode.LIGHT;
       document.documentElement.classList.remove("dark");
+      document.documentElement.style.backgroundColor =
+        config.theme.colors["side-light"];
     }
   }, [themeMode]);
 

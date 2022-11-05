@@ -1,10 +1,9 @@
-import { Box } from "@/components/atoms/Box";
 import { AppPresentation } from "@/components/organisms/AppPresentation";
-import { FormSearchTweet } from "@/components/organisms/FormSearchTweet";
 import { TweetPresentation } from "@/components/organisms/TweetPresentation";
+import { SearchBarContext } from "@/contexts/SearchBarContext";
 import { useTweetInfo } from "@/hooks/useTweetInfo";
-import Link from "next/link";
-import { FC } from "react";
+import { useSearchParams } from "next/navigation";
+import { FC, useContext, useEffect } from "react";
 
 export type HomepageTemplateProps = {
   title: string;
@@ -15,37 +14,27 @@ export const HomepageTemplate: FC<HomepageTemplateProps> = ({
   title,
   introduction,
 }) => {
+  const { setSearchBarValue } = useContext(SearchBarContext);
   const { tweetInfo, setTweetId, resetTweetId } = useTweetInfo();
+  const searchParams = useSearchParams();
 
-  return null;
+  useEffect(() => {
+    const tweetId = searchParams.get("id");
+    if (!tweetId || tweetId.length === 0) {
+      setSearchBarValue("");
+      resetTweetId();
+    } else {
+      setTweetId(tweetId);
+    }
+  }, [resetTweetId, searchParams, setSearchBarValue, setTweetId]);
+
   return (
-    <div className="container flex flex-col items-center mx-auto">
-      <header className="py-4">
-        <button
-          className="text-4xl cursor-pointer font-logo"
-          onClick={resetTweetId}
-        >
-          IB Saver
-        </button>
-      </header>
-      <main className="relative -translate-x-2 mb-16 w-full min-w-[288px] max-w-lg">
-        <Box className="pb-12">
-          {!tweetInfo ? (
-            <AppPresentation title={title} introduction={introduction} />
-          ) : (
-            <TweetPresentation tweetInfo={tweetInfo} />
-          )}
-        </Box>
-        <FormSearchTweet onSubmit={setTweetId} />
-      </main>
-      <footer className="pb-safe">
-        <p>
-          Créé par{" "}
-          <Link className="font-bold" href="https://www.kbraquin.com">
-            Kilian Braquin
-          </Link>
-        </p>
-      </footer>
-    </div>
+    <>
+      {!tweetInfo ? (
+        <AppPresentation />
+      ) : (
+        <TweetPresentation tweetInfo={tweetInfo} />
+      )}
+    </>
   );
 };

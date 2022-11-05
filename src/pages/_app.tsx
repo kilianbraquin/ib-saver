@@ -1,15 +1,17 @@
 import { Layout } from "@/components/atoms/Layout";
+import { SearchBarContext } from "@/contexts/SearchBarContext";
 import { ThemeModeContext } from "@/contexts/ThemeModeContext";
 import { useThemeMode } from "@/hooks/useThemeMode";
 import "@/styles/globals.css";
 import * as Fathom from "fathom-client";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function App({ Component, pageProps }) {
   const router = useRouter();
   const { toggleThemeMode, themeMode } = useThemeMode();
+  const [searchBarValue, setSearchBarValue] = useState("");
 
   useEffect(() => {
     Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID, {
@@ -39,9 +41,16 @@ function App({ Component, pageProps }) {
           toggleThemeMode: toggleThemeMode,
         }}
       >
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <SearchBarContext.Provider
+          value={{
+            searchBarValue: searchBarValue,
+            setSearchBarValue: setSearchBarValue,
+          }}
+        >
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </SearchBarContext.Provider>
       </ThemeModeContext.Provider>
     </>
   );
