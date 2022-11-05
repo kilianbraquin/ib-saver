@@ -36,11 +36,12 @@ export const TweetPresentation: FC<TweetPresentationProps> = ({
         <li className="flex justify-between">
           <div className="font-bold">Auteur</div>
           <div>
-            <Link href={`https://twitter.com/${tweetInfo.author}`}>
-              <a
-                className="text-primary font-bold"
-                target="_blank"
-              >{`@${tweetInfo.author}`}</a>
+            <Link
+              className="text-primary font-bold"
+              href={`https://twitter.com/${tweetInfo.author}`}
+              target="_blank"
+            >
+              {`@${tweetInfo.author}`}
             </Link>
           </div>
         </li>
@@ -48,11 +49,9 @@ export const TweetPresentation: FC<TweetPresentationProps> = ({
           <div className="font-bold">Date</div>
           <div>
             <Link href="#">
-              <a>
-                <time
-                  dateTime={tweetInfo.date}
-                >{`${timeString} · ${dateString}`}</time>
-              </a>
+              <time
+                dateTime={tweetInfo.date}
+              >{`${timeString} · ${dateString}`}</time>
             </Link>
           </div>
         </li>

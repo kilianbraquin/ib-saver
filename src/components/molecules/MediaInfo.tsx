@@ -1,6 +1,6 @@
 import { TweetInfo } from "@/hooks/useTweetInfo";
 import LinkIcon from "@/icons/link.svg";
-import Image from "next/future/image";
+import Image from "next/image";
 import Link from "next/link";
 import { FC, useMemo } from "react";
 
@@ -37,14 +37,13 @@ export const MediaInfo: FC<MediaInfoProps> = ({ media }) => {
           <ul>
             {clearedVariants.map((variant, index) => (
               <li key={variant.url}>
-                <Link href={variant.url}>
-                  <a
-                    className="text-primary font-bold hover:underline flex items-center space-x-1"
-                    target="_blank"
-                  >
-                    <LinkIcon width={20} />
-                    <span>{labels[index]}</span>
-                  </a>
+                <Link
+                  className="text-primary font-bold hover:underline flex items-center space-x-1"
+                  href={variant.url}
+                  target="_blank"
+                >
+                  <LinkIcon width={20} />
+                  <span>{labels[index]}</span>
                 </Link>
               </li>
             ))}
@@ -67,14 +66,13 @@ export const MediaInfo: FC<MediaInfoProps> = ({ media }) => {
           <div className="font-bold text-center">GIF Animé</div>
         </div>
         <div>
-          <Link href={clearedVariants[0].url}>
-            <a
-              className="text-primary font-bold hover:underline flex items-center space-x-1"
-              target="_blank"
-            >
-              <LinkIcon width={20} />
-              <span>{defaultLabel}</span>
-            </a>
+          <Link
+            className="text-primary font-bold hover:underline flex items-center space-x-1"
+            target="_blank"
+            href={clearedVariants[0].url}
+          >
+            <LinkIcon width={20} />
+            <span>{defaultLabel}</span>
           </Link>
         </div>
       </div>
@@ -94,14 +92,13 @@ export const MediaInfo: FC<MediaInfoProps> = ({ media }) => {
           <div className="font-bold text-center">Photo</div>
         </div>
         <div>
-          <Link href={media.url}>
-            <a
-              className="text-primary font-bold hover:underline flex items-center space-x-1"
-              target="_blank"
-            >
-              <LinkIcon width={20} />
-              <span>{defaultLabel}</span>
-            </a>
+          <Link
+            className="text-primary font-bold hover:underline flex items-center space-x-1"
+            href={media.url}
+            target="_blank"
+          >
+            <LinkIcon width={20} />
+            <span>{defaultLabel}</span>
           </Link>
         </div>
       </div>

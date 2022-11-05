@@ -40,8 +40,8 @@ export const HomepageTemplate: FC<HomepageTemplateProps> = ({
       <footer className="pb-safe">
         <p>
           Créé par{" "}
-          <Link href="https://www.kbraquin.com">
-            <a className="font-bold">Kilian Braquin</a>
+          <Link className="font-bold" href="https://www.kbraquin.com">
+            Kilian Braquin
           </Link>
         </p>
       </footer>
