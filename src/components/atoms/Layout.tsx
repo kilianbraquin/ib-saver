@@ -1,3 +1,4 @@
+import { SearchBar } from "@/components/atoms/SearchBar";
 import { ThemeMode, ThemeModeContext } from "@/contexts/ThemeModeContext";
 import IBSaverIcon from "@/icons/ib-saver-logo.svg";
 import Bookmark from "@fontawesome/regular/bookmark.svg";
@@ -18,7 +19,9 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
     <div className="bg-side-light dark:bg-side-dark">
       <div className="mx-auto min-h-screen max-w-2xl border-r border-l border-border-light bg-center-light pb-safe dark:bg-center-dark dark:border-border-dark">
         <header className="flex items-center justify-between border-b p-4 border-border-light dark:border-border-dark">
-          <IBSaverIcon />
+          <Link href={"/"}>
+            <IBSaverIcon />
+          </Link>
           <div className="flex space-x-4 items-center">
             <Link href="#">
               <ClockRotateLeft className="fill-primary" height={26} />
@@ -31,6 +34,7 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
             </button>
           </div>
         </header>
+        <SearchBar />
         <main>{children}</main>
       </div>
     </div>
