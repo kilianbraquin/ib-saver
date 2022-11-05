@@ -17,11 +17,12 @@ export const HomepageTemplate: FC<HomepageTemplateProps> = ({
 }) => {
   const { tweetInfo, setTweetId, resetTweetId } = useTweetInfo();
 
+  return null;
   return (
-    <div className="container mx-auto flex flex-col items-center">
+    <div className="container flex flex-col items-center mx-auto">
       <header className="py-4">
         <button
-          className="text-4xl font-logo cursor-pointer"
+          className="text-4xl cursor-pointer font-logo"
           onClick={resetTweetId}
         >
           IB Saver

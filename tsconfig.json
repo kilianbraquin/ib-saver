@@ -3,7 +3,8 @@
     "baseUrl": ".",
     "rootDir": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@fontawesome/*": ["./node_modules/@fortawesome/fontawesome-pro/svgs/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

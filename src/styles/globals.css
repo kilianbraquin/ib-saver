@@ -3,8 +3,6 @@
 @tailwind utilities;
 
 html {
-    min-height: 100vh;
-    background-color: theme("colors.primary");
     font-family: theme("fontFamily.main");
 }
 
