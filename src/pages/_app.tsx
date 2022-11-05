@@ -1,7 +1,8 @@
 import { Layout } from "@/components/atoms/Layout";
 import { SearchBarContext } from "@/contexts/SearchBarContext";
-import { ThemeModeContext } from "@/contexts/ThemeModeContext";
+import { ThemeMode, ThemeModeContext } from "@/contexts/ThemeModeContext";
 import { useThemeMode } from "@/hooks/useThemeMode";
+import { tailwindColors } from "@/lib/tailwind/config";
 import "@/styles/globals.css";
 import * as Fathom from "fathom-client";
 import Head from "next/head";
@@ -10,7 +11,7 @@ import { useEffect, useState } from "react";
 
 function App({ Component, pageProps }) {
   const router = useRouter();
-  const { toggleThemeMode, themeMode } = useThemeMode();
+  const { themeMode, toggleThemeMode } = useThemeMode();
   const [searchBarValue, setSearchBarValue] = useState("");
 
   useEffect(() => {
@@ -34,6 +35,14 @@ function App({ Component, pageProps }) {
     <>
       <Head>
         <title>IndieBaie Studio</title>
+        <meta
+          name="theme-color"
+          content={
+            themeMode === ThemeMode.LIGHT
+              ? tailwindColors["center-light"]
+              : tailwindColors["center-dark"]
+          }
+        />
       </Head>
       <ThemeModeContext.Provider
         value={{
