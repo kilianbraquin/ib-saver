@@ -1,4 +1,4 @@
-import { HistoryTemplate } from "@/components/templates/HistoryTemplate";
+import { HistoryTemplate } from "@/components/HistoryTemplate";
 import { GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
 

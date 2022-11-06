@@ -1,4 +1,4 @@
-import { HomepageTemplate } from "@/components/templates/HomepageTemplate";
+import { HomepageTemplate } from "@/components/HomepageTemplate";
 import { GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
 

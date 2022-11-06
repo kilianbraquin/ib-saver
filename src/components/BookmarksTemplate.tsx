@@ -1,5 +1,5 @@
-import { BookmarkPresentation } from "@/components/organisms/BookmarkPresentation";
-import { TweetPresentation } from "@/components/organisms/TweetPresentation";
+import { BookmarkPresentation } from "@/components/BookmarkPresentation";
+import { TweetPresentation } from "@/components/TweetPresentation";
 import { SearchBarContext } from "@/contexts/SearchBarContext";
 import { useTweetBookmarks } from "@/hooks/useTweetBookmarks";
 import { TweetInfo } from "@/hooks/useTweetInfo";

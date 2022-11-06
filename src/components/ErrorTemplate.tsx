@@ -1,4 +1,4 @@
-import { ErrorPresentation } from "@/components/organisms/ErrorPresentation";
+import { ErrorPresentation } from "@/components/ErrorPresentation";
 import { FC } from "react";
 
 export const ErrorTemplate: FC = () => {

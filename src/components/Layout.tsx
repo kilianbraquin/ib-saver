@@ -1,6 +1,6 @@
-import { Footer } from "@/components/atoms/Footer";
-import { Header } from "@/components/atoms/Header";
-import { SearchBar } from "@/components/atoms/SearchBar";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+import { SearchBar } from "@/components/SearchBar";
 import { FC, PropsWithChildren } from "react";
 
 export const Layout: FC<PropsWithChildren> = ({ children }) => {

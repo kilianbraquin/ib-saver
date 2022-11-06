@@ -1,4 +1,4 @@
-import { Layout } from "@/components/atoms/Layout";
+import { Layout } from "@/components/Layout";
 import { SearchBarContext } from "@/contexts/SearchBarContext";
 import { ThemeMode, ThemeModeContext } from "@/contexts/ThemeModeContext";
 import { useThemeMode } from "@/hooks/useThemeMode";

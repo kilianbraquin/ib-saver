@@ -1,5 +1,5 @@
-import { AppPresentation } from "@/components/organisms/AppPresentation";
-import { TweetPresentation } from "@/components/organisms/TweetPresentation";
+import { AppPresentation } from "@/components/AppPresentation";
+import { TweetPresentation } from "@/components/TweetPresentation";
 import { SearchBarContext } from "@/contexts/SearchBarContext";
 import { useTweetInfo } from "@/hooks/useTweetInfo";
 import { useSearchParams } from "next/navigation";

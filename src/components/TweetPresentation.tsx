@@ -1,4 +1,4 @@
-import { MediaInfo } from "@/components/molecules/MediaInfo";
+import { MediaInfo } from "@/components/MediaInfo";
 import { useTweetBookmarks } from "@/hooks/useTweetBookmarks";
 import { useTweetHistory } from "@/hooks/useTweetHistory";
 import { TweetInfo } from "@/hooks/useTweetInfo";

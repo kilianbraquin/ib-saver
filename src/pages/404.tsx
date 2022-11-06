@@ -1,4 +1,4 @@
-import { ErrorTemplate } from "@/components/templates/ErrorTemplate";
+import { ErrorTemplate } from "@/components/ErrorTemplate";
 import { GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
 

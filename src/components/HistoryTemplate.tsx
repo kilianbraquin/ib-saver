@@ -1,5 +1,5 @@
-import { HistoryPresentation } from "@/components/organisms/HistoryPresentation";
-import { TweetPresentation } from "@/components/organisms/TweetPresentation";
+import { HistoryPresentation } from "@/components/HistoryPresentation";
+import { TweetPresentation } from "@/components/TweetPresentation";
 import { SearchBarContext } from "@/contexts/SearchBarContext";
 import { useTweetHistory } from "@/hooks/useTweetHistory";
 import { TweetInfo } from "@/hooks/useTweetInfo";

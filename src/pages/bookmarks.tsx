@@ -1,4 +1,4 @@
-import { BookmarksTemplate } from "@/components/templates/BookmarksTemplate";
+import { BookmarksTemplate } from "@/components/BookmarksTemplate";
 import { GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
 
