@@ -1,4 +1,4 @@
-import { HomepageTemplate } from "@/components/HomepageTemplate";
+import { ErrorTemplate } from "@/components/ErrorTemplate";
 import { GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
 
@@ -31,8 +31,9 @@ const HomePage: NextPage = (props) => {
           site: "@ib_saver",
           cardType: "summary_large_image",
         }}
+        noindex={true}
       />
-      <HomepageTemplate {...props} />
+      <ErrorTemplate {...props} />
     </>
   );
 };

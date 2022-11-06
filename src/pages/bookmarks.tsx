@@ -1,4 +1,4 @@
-import { HomepageTemplate } from "@/components/HomepageTemplate";
+import { BookmarksTemplate } from "@/components/BookmarksTemplate";
 import { GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
 
@@ -32,7 +32,7 @@ const HomePage: NextPage = (props) => {
           cardType: "summary_large_image",
         }}
       />
-      <HomepageTemplate {...props} />
+      <BookmarksTemplate {...props} />
     </>
   );
 };
