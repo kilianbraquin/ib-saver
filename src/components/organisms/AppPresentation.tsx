@@ -13,7 +13,7 @@ export const AppPresentation: FC = () => {
         className="absolute z-0 opacity-5 fill-main-text-light dark:fill-main-text-dark"
         width={210}
       />
-      <p className="z-10 inline-block break-all p-4 text-main-text-light dark:text-main-text-dark">
+      <p className="z-10 inline-block ib-break-words p-4 text-main-text-light dark:text-main-text-dark">
         Recherchez un tweet avec son lien
         <br />
         <button

@@ -9,3 +9,8 @@ html {
 .pb-safe {
     padding-bottom: env(safe-area-inset-bottom);
 }
+
+.ib-break-words {
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
