@@ -1,17 +1,14 @@
+import { CustomHead } from "@/components/CustomHead";
 import { Layout } from "@/components/Layout";
 import { SearchBarContext } from "@/contexts/SearchBarContext";
-import { ThemeMode, ThemeModeContext } from "@/contexts/ThemeModeContext";
-import { useThemeMode } from "@/hooks/useThemeMode";
-import { tailwindColors } from "@/lib/tailwind/config";
 import "@/styles/globals.css";
 import * as Fathom from "fathom-client";
-import Head from "next/head";
+import { ThemeProvider } from "next-themes";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 function App({ Component, pageProps }) {
   const router = useRouter();
-  const { themeMode, toggleThemeMode } = useThemeMode();
   const [searchBarValue, setSearchBarValue] = useState("");
 
   useEffect(() => {
@@ -32,36 +29,19 @@ function App({ Component, pageProps }) {
   }, [router.events]);
 
   return (
-    <>
-      <Head>
-        <title>IndieBaie Studio</title>
-        <meta
-          name="theme-color"
-          content={
-            themeMode === ThemeMode.LIGHT
-              ? tailwindColors["center-light"]
-              : tailwindColors["center-dark"]
-          }
-        />
-      </Head>
-      <ThemeModeContext.Provider
+    <ThemeProvider attribute="class">
+      <SearchBarContext.Provider
         value={{
-          themeMode: themeMode,
-          toggleThemeMode: toggleThemeMode,
+          searchBarValue: searchBarValue,
+          setSearchBarValue: setSearchBarValue,
         }}
       >
-        <SearchBarContext.Provider
-          value={{
-            searchBarValue: searchBarValue,
-            setSearchBarValue: setSearchBarValue,
-          }}
-        >
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </SearchBarContext.Provider>
-      </ThemeModeContext.Provider>
-    </>
+        <CustomHead />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </SearchBarContext.Provider>
+    </ThemeProvider>
   );
 }
 

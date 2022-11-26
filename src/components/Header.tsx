@@ -1,19 +1,18 @@
-import { ThemeMode, ThemeModeContext } from "@/contexts/ThemeModeContext";
+import { ThemeIcon } from "@/components/ThemeIcon";
 import IBSaverLogo from "@/icons/ib-saver-logo.svg";
 import Bookmark from "@fontawesome/regular/bookmark.svg";
 import ClockRotateLeft from "@fontawesome/regular/clock-rotate-left.svg";
-import Moon from "@fontawesome/regular/moon.svg";
-import Sun from "@fontawesome/regular/sun.svg";
+import { useTheme } from "next-themes";
 import Link from "next/link";
-import { FC, useContext, useMemo } from "react";
+import { FC, useCallback } from "react";
 
 export const Header: FC = () => {
-  const { themeMode, toggleThemeMode } = useContext(ThemeModeContext);
+  const { resolvedTheme, setTheme } = useTheme();
 
-  const ThemeToggleIcon = useMemo(() => {
-    if (themeMode === ThemeMode.DARK) return Sun;
-    else return Moon;
-  }, [themeMode]);
+  const toggleThemeMode = useCallback(() => {
+    if (resolvedTheme === "dark") setTheme("light");
+    else setTheme("dark");
+  }, [resolvedTheme, setTheme]);
 
   return (
     <header className="flex items-center justify-between border-b p-4 border-border-light dark:border-border-dark">
@@ -28,7 +27,7 @@ export const Header: FC = () => {
           <Bookmark className="fill-primary" height={26} />
         </Link>
         <button onClick={toggleThemeMode}>
-          <ThemeToggleIcon className="fill-primary" height={26} />
+          <ThemeIcon />
         </button>
       </div>
     </header>
