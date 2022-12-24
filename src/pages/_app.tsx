@@ -1,6 +1,5 @@
 import { CustomHead } from "@/components/CustomHead";
 import { Layout } from "@/components/Layout";
-import { SearchBarContext } from "@/contexts/SearchBarContext";
 import "@/styles/globals.css";
 import * as Fathom from "fathom-client";
 import { ThemeProvider } from "next-themes";
@@ -30,17 +29,10 @@ function App({ Component, pageProps }) {
 
   return (
     <ThemeProvider attribute="class">
-      <SearchBarContext.Provider
-        value={{
-          searchBarValue: searchBarValue,
-          setSearchBarValue: setSearchBarValue,
-        }}
-      >
-        <CustomHead />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </SearchBarContext.Provider>
+      <CustomHead />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </ThemeProvider>
   );
 }

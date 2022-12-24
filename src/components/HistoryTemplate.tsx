@@ -1,21 +1,23 @@
 import { HistoryPresentation } from "@/components/HistoryPresentation";
 import { TweetPresentation } from "@/components/TweetPresentation";
-import { SearchBarContext } from "@/contexts/SearchBarContext";
 import { useTweetHistory } from "@/hooks/useTweetHistory";
 import { TweetInfo } from "@/hooks/useTweetInfo";
+import { useSearchBarStore } from "@/stores/useSearchBarStore";
 import axios from "axios";
-import { FC, useContext, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 
 export const HistoryTemplate: FC = () => {
-  const { setSearchBarValue } = useContext(SearchBarContext);
+  const resetSearchBarText = useSearchBarStore(
+    (state) => state.resetSearchBarText
+  );
   const tweetHistoryInfoMemo = useRef<TweetInfo[]>([]);
   const [tweetHistoryInfo, setTweetHistoryInfo] = useState<TweetInfo[]>([]);
   const [tweetHistoryIds, setTweetHistoryIds] = useState<string[]>([]);
   const { getHistory } = useTweetHistory();
 
   useEffect(() => {
-    setSearchBarValue("");
-  }, [setSearchBarValue]);
+    resetSearchBarText();
+  }, [resetSearchBarText]);
 
   useEffect(() => {
     setTweetHistoryIds(getHistory());

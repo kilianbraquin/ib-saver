@@ -1,21 +1,23 @@
 import { BookmarkPresentation } from "@/components/BookmarkPresentation";
 import { TweetPresentation } from "@/components/TweetPresentation";
-import { SearchBarContext } from "@/contexts/SearchBarContext";
 import { useTweetBookmarks } from "@/hooks/useTweetBookmarks";
 import { TweetInfo } from "@/hooks/useTweetInfo";
+import { useSearchBarStore } from "@/stores/useSearchBarStore";
 import axios from "axios";
-import { FC, useContext, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 
 export const BookmarksTemplate: FC = () => {
-  const { setSearchBarValue } = useContext(SearchBarContext);
+  const resetSearchBarText = useSearchBarStore(
+    (state) => state.resetSearchBarText
+  );
   const tweetBookmarksInfoMemo = useRef<TweetInfo[]>([]);
   const [tweetBookmarksInfo, setTweetBookmarksInfo] = useState<TweetInfo[]>([]);
   const [tweetBookmarksIds, setTweetBookmarksIds] = useState<string[]>([]);
   const { getBookmarks } = useTweetBookmarks();
 
   useEffect(() => {
-    setSearchBarValue("");
-  }, [setSearchBarValue]);
+    resetSearchBarText();
+  }, [resetSearchBarText]);
 
   useEffect(() => {
     setTweetBookmarksIds(getBookmarks());

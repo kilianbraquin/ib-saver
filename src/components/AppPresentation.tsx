@@ -1,10 +1,10 @@
-import { SearchBarContext } from "@/contexts/SearchBarContext";
+import { useSearchBarStore } from "@/stores/useSearchBarStore";
 import MagnifyingGlass from "@fontawesome/regular/magnifying-glass.svg";
 import { useRouter } from "next/navigation";
-import { FC, useContext } from "react";
+import { FC } from "react";
 
 export const AppPresentation: FC = () => {
-  const { setSearchBarValue } = useContext(SearchBarContext);
+  const setSearchBarText = useSearchBarStore((state) => state.setSearchBarText);
   const router = useRouter();
 
   return (
@@ -19,7 +19,7 @@ export const AppPresentation: FC = () => {
         <button
           className="font-bold text-primary text-start"
           onClick={() => {
-            setSearchBarValue(
+            setSearchBarText(
               "https://twitter.com/T1LoL/status/1588818401140539392"
             );
             router.push("/?id=" + "1588818401140539392");
@@ -34,7 +34,7 @@ export const AppPresentation: FC = () => {
         <button
           className="font-bold text-primary text-start"
           onClick={() => {
-            setSearchBarValue("1588818401140539392");
+            setSearchBarText("1588818401140539392");
             router.push("/?id=" + "1588818401140539392");
           }}
         >

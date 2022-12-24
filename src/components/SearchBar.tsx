@@ -1,19 +1,20 @@
-import { SearchBarContext } from "@/contexts/SearchBarContext";
+import { useSearchBarStore } from "@/stores/useSearchBarStore";
 import CircleArrowRight from "@fontawesome/regular/circle-arrow-right.svg";
 import { useRouter } from "next/navigation";
-import { FC, FormEventHandler, useCallback, useContext } from "react";
+import { FC, FormEventHandler, useCallback } from "react";
 
 export const SearchBar: FC = () => {
-  const { searchBarValue, setSearchBarValue } = useContext(SearchBarContext);
+  const searchBarText = useSearchBarStore((state) => state.searchBarText);
+  const setSearchBarText = useSearchBarStore((state) => state.setSearchBarText);
   const router = useRouter();
 
   const handleOnSubmit = useCallback<FormEventHandler<HTMLFormElement>>(
     (event) => {
       event.preventDefault();
       try {
-        const value = searchBarValue.trim();
+        const value = searchBarText.trim();
         let tweetIdentifier: string;
-        if (/^[0-9]+$/.test(searchBarValue)) tweetIdentifier = value;
+        if (/^[0-9]+$/.test(searchBarText)) tweetIdentifier = value;
         else {
           const url = new URL(value);
           tweetIdentifier = url.pathname.split("/").pop();
@@ -26,7 +27,7 @@ export const SearchBar: FC = () => {
         alert("Vous avez entré un identifiant ou un lien incorrect");
       }
     },
-    [router, searchBarValue]
+    [router, searchBarText]
   );
 
   return (
@@ -41,8 +42,8 @@ export const SearchBar: FC = () => {
         type="text"
         className="flex-1 bg-transparent pr-4 outline-none text-main-text-light dark:text-main-text-dark shadow-inner"
         placeholder="Rechercher un tweet"
-        value={searchBarValue}
-        onChange={(e) => setSearchBarValue(e.currentTarget.value)}
+        value={searchBarText}
+        onChange={(e) => setSearchBarText(e.currentTarget.value)}
         required
       />
       <button>
