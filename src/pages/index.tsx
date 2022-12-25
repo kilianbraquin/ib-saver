@@ -1,5 +1,5 @@
 import { HomepageTemplate } from "@/components/HomepageTemplate";
-import { GetStaticProps, NextPage } from "next";
+import { NextPage } from "next";
 import { NextSeo } from "next-seo";
 
 const HomePage: NextPage = (props) => {
@@ -35,14 +35,6 @@ const HomePage: NextPage = (props) => {
       <HomepageTemplate {...props} />
     </>
   );
-};
-
-export const getStaticProps: GetStaticProps = async (ctx) => {
-  // const { title, introduction } = await getHomePage();
-
-  return {
-    props: {},
-  };
 };
 
 export default HomePage;

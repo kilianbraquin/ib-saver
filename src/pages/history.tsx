@@ -1,6 +1,16 @@
-import { HistoryTemplate } from "@/components/HistoryTemplate";
-import { GetStaticProps, NextPage } from "next";
+import { NextPage } from "next";
 import { NextSeo } from "next-seo";
+import dynamic from "next/dynamic";
+
+const DynamicHistoryTemplate = dynamic(
+  () =>
+    import("@/components/HistoryTemplate").then(
+      ({ HistoryTemplate }) => HistoryTemplate
+    ),
+  {
+    ssr: false,
+  }
+);
 
 const HomePage: NextPage = (props) => {
   return (
@@ -9,6 +19,7 @@ const HomePage: NextPage = (props) => {
         title="IB Saver - Téléchargement de médias Twitter"
         description="Recherchez vos tweets préférés et téléchargez leurs médias (images, vidéos) en qualité optimale"
         canonical="https://www.ibsaver.com"
+        noindex={true}
         openGraph={{
           title: "IB Saver - Téléchargement de médias Twitter",
           description:
@@ -32,17 +43,9 @@ const HomePage: NextPage = (props) => {
           cardType: "summary_large_image",
         }}
       />
-      <HistoryTemplate {...props} />
+      <DynamicHistoryTemplate {...props} />
     </>
   );
-};
-
-export const getStaticProps: GetStaticProps = async (ctx) => {
-  // const { title, introduction } = await getHomePage();
-
-  return {
-    props: {},
-  };
 };
 
 export default HomePage;

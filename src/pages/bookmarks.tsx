@@ -1,7 +1,16 @@
-import { BookmarksTemplate } from "@/components/BookmarksTemplate";
-import { GetStaticProps, NextPage } from "next";
+import { NextPage } from "next";
 import { NextSeo } from "next-seo";
+import dynamic from "next/dynamic";
 
+const DynamicBookmarksTemplate = dynamic(
+  () =>
+    import("@/components/BookmarksTemplate").then(
+      ({ BookmarksTemplate }) => BookmarksTemplate
+    ),
+  {
+    ssr: false,
+  }
+);
 const HomePage: NextPage = (props) => {
   return (
     <>
@@ -9,6 +18,7 @@ const HomePage: NextPage = (props) => {
         title="IB Saver - Téléchargement de médias Twitter"
         description="Recherchez vos tweets préférés et téléchargez leurs médias (images, vidéos) en qualité optimale"
         canonical="https://www.ibsaver.com"
+        noindex={true}
         openGraph={{
           title: "IB Saver - Téléchargement de médias Twitter",
           description:
@@ -23,7 +33,7 @@ const HomePage: NextPage = (props) => {
               width: 1200,
               height: 630,
               alt: "Og Image Alt",
-              type: "image/jpeg",
+              type: "image/png",
             },
           ],
         }}
@@ -32,17 +42,9 @@ const HomePage: NextPage = (props) => {
           cardType: "summary_large_image",
         }}
       />
-      <BookmarksTemplate {...props} />
+      <DynamicBookmarksTemplate {...props} />
     </>
   );
-};
-
-export const getStaticProps: GetStaticProps = async (ctx) => {
-  // const { title, introduction } = await getHomePage();
-
-  return {
-    props: {},
-  };
 };
 
 export default HomePage;

@@ -1,27 +1,29 @@
 import { AppPresentation } from "@/components/AppPresentation";
 import { TweetPresentation } from "@/components/TweetPresentation";
-import { useTweetInfo } from "@/hooks/useTweetInfo";
 import { useSearchBarStore } from "@/stores/useSearchBarStore";
+import { useUserJourneyStore } from "@/stores/useUserJourneyStore";
 import { useSearchParams } from "next/navigation";
-import { FC, useEffect } from "react";
+import { FC, useEffect, useMemo } from "react";
 
 export const HomepageTemplate: FC = () => {
+  const addToHistory = useUserJourneyStore((state) => state.addToHistory);
   const resetSearchBarText = useSearchBarStore(
     (state) => state.resetSearchBarText
   );
-  const { tweetInfo, setTweetId, resetTweetId } = useTweetInfo();
   const searchParams = useSearchParams();
+  const tweetId = useMemo(() => {
+    const tweetId = searchParams.get("id");
+    if (!tweetId || tweetId.length === 0) return null;
+    else return tweetId;
+  }, [searchParams]);
 
   useEffect(() => {
-    const tweetId = searchParams.get("id");
-    if (!tweetId || tweetId.length === 0) {
-      resetSearchBarText();
-      resetTweetId();
-    } else {
-      setTweetId(tweetId);
+    if (!tweetId) resetSearchBarText();
+    else {
+      addToHistory(tweetId);
     }
-  }, [resetTweetId, searchParams, resetSearchBarText, setTweetId]);
+  }, [resetSearchBarText, tweetId]);
 
-  if (!tweetInfo) return <AppPresentation />;
-  else return <TweetPresentation tweetInfo={tweetInfo} />;
+  if (!tweetId) return <AppPresentation />;
+  else return <TweetPresentation tweetId={tweetId} />;
 };

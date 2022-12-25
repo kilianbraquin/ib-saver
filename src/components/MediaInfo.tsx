@@ -1,4 +1,4 @@
-import { TweetInfo } from "@/hooks/useTweetInfo";
+import { TweetInfo } from "@/types/twitter";
 import Download from "@fontawesome/regular/download.svg";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,14 +22,16 @@ export const MediaInfo: FC<MediaInfoProps> = ({ media }) => {
   if (media.type === "video")
     return (
       <div className="flex space-x-3">
-        <Image
-          className="border-2 border-border-light dark:border-border-dark rounded-md self-stretch"
-          src={media.preview_image_url}
-          alt="media miniature"
-          width={140}
-          height={80}
-          unoptimized
-        />
+        {media.preview_image_url && (
+          <Image
+            className="border-2 border-border-light dark:border-border-dark rounded-md self-stretch"
+            src={media.preview_image_url}
+            alt="media miniature"
+            width={140}
+            height={80}
+            unoptimized
+          />
+        )}
         <div>
           <div className="font-bold mb-0.5 text-main-text-light dark:text-main-text-dark">
             Vidéo
@@ -54,14 +56,16 @@ export const MediaInfo: FC<MediaInfoProps> = ({ media }) => {
   else if (media.type === "animated_gif")
     return (
       <div className="flex space-x-3">
-        <Image
-          className="border-2 border-border-light dark:border-border-dark rounded-md self-stretch"
-          src={media.preview_image_url}
-          alt="media miniature"
-          width={140}
-          height={80}
-          unoptimized
-        />
+        {media.preview_image_url && (
+          <Image
+            className="border-2 border-border-light dark:border-border-dark rounded-md self-stretch"
+            src={media.preview_image_url}
+            alt="media miniature"
+            width={140}
+            height={80}
+            unoptimized
+          />
+        )}
         <div>
           <div className="font-bold mb-0.5 text-main-text-light dark:text-main-text-dark">
             GIF Animé
@@ -82,7 +86,7 @@ export const MediaInfo: FC<MediaInfoProps> = ({ media }) => {
       <div className="flex space-x-3">
         <Image
           className="border-2 border-border-light dark:border-border-dark rounded-md self-stretch"
-          src={media.url}
+          src={media.url ?? "#"}
           alt="media miniature"
           width={140}
           height={80}
@@ -94,7 +98,7 @@ export const MediaInfo: FC<MediaInfoProps> = ({ media }) => {
           </div>
           <Link
             className="text-primary font-bold hover:underline flex items-center space-x-1"
-            href={media.url}
+            href={media.url ?? "#"}
             target="_blank"
           >
             <Download className="fill-primary" width={18} />

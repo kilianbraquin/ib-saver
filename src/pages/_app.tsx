@@ -1,31 +1,41 @@
 import { CustomHead } from "@/components/CustomHead";
 import { Layout } from "@/components/Layout";
+import { useUserJourneyStore } from "@/stores/useUserJourneyStore";
 import "@/styles/globals.css";
 import * as Fathom from "fathom-client";
 import { ThemeProvider } from "next-themes";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { AppProps } from "next/app";
+import { usePathname } from "next/navigation";
+import { FC, useEffect } from "react";
 
-function App({ Component, pageProps }) {
-  const router = useRouter();
-  const [searchBarValue, setSearchBarValue] = useState("");
+const App: FC<AppProps> = ({ Component, pageProps }) => {
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const storageEventCallback = (e: StorageEvent) => {
+      if (e.key === useUserJourneyStore.persist.getOptions().name) {
+        useUserJourneyStore.persist.rehydrate();
+      }
+    };
+
+    window.addEventListener("storage", storageEventCallback);
+    return () => {
+      window.removeEventListener("storage", storageEventCallback);
+    };
+  }, []);
 
   useEffect(() => {
     Fathom.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID, {
       includedDomains: [process.env.NEXT_PUBLIC_DOMAIN_NAME],
       url: process.env.NEXT_PUBLIC_FATHOM_SCRIPT_URL,
+      honorDNT: true,
+      auto: false,
     });
+  }, []);
 
-    function onRouteChangeComplete() {
-      Fathom.trackPageview();
-    }
-
-    router.events.on("routeChangeComplete", onRouteChangeComplete);
-
-    return () => {
-      router.events.off("routeChangeComplete", onRouteChangeComplete);
-    };
-  }, [router.events]);
+  useEffect(() => {
+    if (pathname) Fathom.trackPageview({ url: pathname });
+  }, [pathname]);
 
   return (
     <ThemeProvider attribute="class">
@@ -35,6 +45,6 @@ function App({ Component, pageProps }) {
       </Layout>
     </ThemeProvider>
   );
-}
+};
 
 export default App;

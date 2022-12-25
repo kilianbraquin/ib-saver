@@ -1,5 +1,6 @@
 import { useSearchBarStore } from "@/stores/useSearchBarStore";
 import CircleArrowRight from "@fontawesome/regular/circle-arrow-right.svg";
+import * as Fathom from "fathom-client";
 import { useRouter } from "next/navigation";
 import { FC, FormEventHandler, useCallback } from "react";
 
@@ -17,11 +18,12 @@ export const SearchBar: FC = () => {
         if (/^[0-9]+$/.test(searchBarText)) tweetIdentifier = value;
         else {
           const url = new URL(value);
-          tweetIdentifier = url.pathname.split("/").pop();
+          tweetIdentifier = url.pathname.split("/").pop() ?? "";
           if (!/^[0-9]+$/.test(tweetIdentifier)) {
             throw new Error("Incorrect link");
           }
         }
+        Fathom.trackGoal("B7NFDGBI", 0);
         router.push("/?id=" + tweetIdentifier);
       } catch {
         alert("Vous avez entré un identifiant ou un lien incorrect");
