@@ -1,5 +1,5 @@
-import create from "zustand";
-import { persist } from "zustand/middleware";
+import { create } from "zustand";
+import { createJSONStorage, persist } from "zustand/middleware";
 
 type State = {
   bookmarks: string[];
@@ -49,7 +49,7 @@ export const useUserJourneyStore = create(
     }),
     {
       name: "journey", // name of item in the storage (must be unique)
-      getStorage: () => localStorage,
+      storage: createJSONStorage(() => localStorage),
     }
   )
 );
