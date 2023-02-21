@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 html {
-    font-family: theme("fontFamily.main");
+  font-family: theme("fontFamily.main");
 }
 
 .pb-safe {
-    padding-bottom: env(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .ib-break-words {
-    word-break: break-word;
-    overflow-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }

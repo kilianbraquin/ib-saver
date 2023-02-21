@@ -57,7 +57,7 @@ export const TweetPresentation: FC<TweetPresentationProps> = ({
     return (
       <div className="relative flex justify-center py-16">
         <SpinnerThird
-          className="animate-spin opacity-50 fill-main-text-light dark:fill-primary"
+          className="animate-spin fill-main-text-light opacity-50 dark:fill-primary"
           width={210}
         />
       </div>
@@ -65,7 +65,7 @@ export const TweetPresentation: FC<TweetPresentationProps> = ({
   else if (!tweetInfo || error)
     return (
       <div className="p-8">
-        <p className="text-center text-main-text-light dark:text-main-text-dark font-medium">
+        <p className="text-center font-medium text-main-text-light dark:text-main-text-dark">
           {"Ce tweet n'existe pas"}
         </p>
       </div>

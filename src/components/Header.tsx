@@ -15,11 +15,11 @@ export const Header: FC = () => {
   }, [resolvedTheme, setTheme]);
 
   return (
-    <header className="flex items-center justify-between border-b p-4 border-border-light dark:border-border-dark">
+    <header className="flex items-center justify-between border-b border-border-light p-4 dark:border-border-dark">
       <Link href={"/"}>
         <IBSaverLogo />
       </Link>
-      <div className="flex space-x-4 items-center">
+      <div className="flex items-center space-x-4">
         <Link href="/history">
           <ClockRotateLeft className="fill-primary" height={26} />
         </Link>

@@ -10,14 +10,14 @@ export const AppPresentation: FC = () => {
   return (
     <div className="absolute left-1/2 flex h-full w-full -translate-x-1/2 items-center justify-center">
       <MagnifyingGlass
-        className="absolute z-0 opacity-5 fill-main-text-light dark:fill-main-text-dark"
+        className="absolute z-0 fill-main-text-light opacity-5 dark:fill-main-text-dark"
         width={210}
       />
-      <p className="z-10 inline-block ib-break-words p-4 text-main-text-light dark:text-main-text-dark">
+      <p className="ib-break-words z-10 inline-block p-4 text-main-text-light dark:text-main-text-dark">
         Recherchez un tweet avec son lien
         <br />
         <button
-          className="font-bold text-primary text-start"
+          className="text-start font-bold text-primary"
           onClick={() => {
             setSearchBarText(
               "https://twitter.com/T1LoL/status/1588818401140539392"
@@ -32,7 +32,7 @@ export const AppPresentation: FC = () => {
         <br />
         https://twitter.com/T1LoL/status/
         <button
-          className="font-bold text-primary text-start"
+          className="text-start font-bold text-primary"
           onClick={() => {
             setSearchBarText("1588818401140539392");
             router.push("/?id=" + "1588818401140539392");

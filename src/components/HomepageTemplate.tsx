@@ -22,7 +22,7 @@ export const HomepageTemplate: FC = () => {
     else {
       addToHistory(tweetId);
     }
-  }, [resetSearchBarText, tweetId]);
+  }, [addToHistory, resetSearchBarText, tweetId]);
 
   if (!tweetId) return <AppPresentation />;
   else return <TweetPresentation tweetId={tweetId} />;

@@ -9,7 +9,7 @@ export const ThemeIcon: FC = () => {
 
   useEffect(() => setMounted(true), []);
 
-  if (!mounted) return <div className="w-[26px] h-[26px]" />;
+  if (!mounted) return <div className="h-[26px] w-[26px]" />;
   else if (resolvedTheme === "dark")
     return <Sun className="fill-primary" height={26} />;
   else return <Moon className="fill-primary" height={26} />;

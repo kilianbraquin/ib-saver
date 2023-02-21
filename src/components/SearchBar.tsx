@@ -35,14 +35,14 @@ export const SearchBar: FC = () => {
   return (
     <form
       id="search-bar"
-      className="flex justify-between border-b p-4 border-border-light dark:border-border-dark"
+      className="flex justify-between border-b border-border-light p-4 dark:border-border-dark"
       onSubmit={handleOnSubmit}
     >
       <input
         id="search-bar-input"
         autoComplete="off"
         type="text"
-        className="flex-1 bg-transparent pr-4 outline-none text-main-text-light dark:text-main-text-dark shadow-inner"
+        className="shadow-inner flex-1 bg-transparent pr-4 text-main-text-light outline-none dark:text-main-text-dark"
         placeholder="Rechercher un tweet"
         value={searchBarText}
         onChange={(e) => setSearchBarText(e.currentTarget.value)}

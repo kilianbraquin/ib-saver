@@ -3,7 +3,7 @@ import { FC } from "react";
 
 export const Footer: FC = () => {
   return (
-    <footer className="flex flex-col items-center p-4 space-y-1 text-body-text-light dark:text-body-text-dark">
+    <footer className="flex flex-col items-center space-y-1 p-4 text-body-text-light dark:text-body-text-dark">
       <div>
         Crée par{" "}
         <Link
