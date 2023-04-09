@@ -11,7 +11,8 @@ const DynamicBookmarksTemplate = dynamic(
     ssr: false,
   }
 );
-const HomePage: NextPage = (props) => {
+
+const BookmarksPage: NextPage = (props) => {
   return (
     <>
       <NextSeo
@@ -47,4 +48,4 @@ const HomePage: NextPage = (props) => {
   );
 };
 
-export default HomePage;
+export default BookmarksPage;

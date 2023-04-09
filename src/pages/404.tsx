@@ -2,7 +2,7 @@ import { ErrorTemplate } from "@/components/ErrorTemplate";
 import { GetStaticProps, NextPage } from "next";
 import { NextSeo } from "next-seo";
 
-const HomePage: NextPage = (props) => {
+const ErrorPage: NextPage = (props) => {
   return (
     <>
       <NextSeo
@@ -38,12 +38,4 @@ const HomePage: NextPage = (props) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
-  // const { title, introduction } = await getHomePage();
-
-  return {
-    props: {},
-  };
-};
-
-export default HomePage;
+export default ErrorPage;

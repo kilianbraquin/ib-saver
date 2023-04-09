@@ -12,7 +12,7 @@ const DynamicHistoryTemplate = dynamic(
   }
 );
 
-const HomePage: NextPage = (props) => {
+const HistoryPage: NextPage = (props) => {
   return (
     <>
       <NextSeo
@@ -48,4 +48,4 @@ const HomePage: NextPage = (props) => {
   );
 };
 
-export default HomePage;
+export default HistoryPage;
