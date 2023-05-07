@@ -1,3 +1,4 @@
+"use client";
 import { BookmarkPresentation } from "@/components/BookmarkPresentation";
 import { TweetPresentation } from "@/components/TweetPresentation";
 import { useSearchBarStore } from "@/stores/useSearchBarStore";
@@ -29,3 +30,5 @@ export const BookmarksTemplate: FC = () => {
       </ul>
     );
 };
+
+export default BookmarksTemplate;

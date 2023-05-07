@@ -1,3 +1,4 @@
+"use client";
 import { useSearchBarStore } from "@/stores/useSearchBarStore";
 import CircleArrowRight from "@fontawesome/regular/circle-arrow-right.svg";
 import * as Fathom from "fathom-client";

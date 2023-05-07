@@ -1,3 +1,4 @@
+"use client";
 import { AppPresentation } from "@/components/AppPresentation";
 import { TweetPresentation } from "@/components/TweetPresentation";
 import { useSearchBarStore } from "@/stores/useSearchBarStore";

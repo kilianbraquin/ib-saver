@@ -1,3 +1,4 @@
+"use client";
 import { HistoryPresentation } from "@/components/HistoryPresentation";
 import { TweetPresentation } from "@/components/TweetPresentation";
 import { useSearchBarStore } from "@/stores/useSearchBarStore";
@@ -29,3 +30,5 @@ export const HistoryTemplate: FC = () => {
       </ul>
     );
 };
+
+export default HistoryTemplate;

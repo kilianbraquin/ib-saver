@@ -1,3 +1,4 @@
+"use client";
 import { ThemeIcon } from "@/components/ThemeIcon";
 import IBSaverLogo from "@/icons/ib-saver-logo.svg";
 import Bookmark from "@fontawesome/regular/bookmark.svg";

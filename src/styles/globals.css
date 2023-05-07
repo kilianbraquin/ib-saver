@@ -2,15 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  font-family: theme("fontFamily.main");
+@layer base {
+  html {
+    font-family: theme("fontFamily.main");
+  }
 }
 
-.pb-safe {
-  padding-bottom: env(safe-area-inset-bottom);
-}
+@layer utilities {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 
-.ib-break-words {
-  word-break: break-word;
-  overflow-wrap: break-word;
+  .ib-break-words {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
 }
