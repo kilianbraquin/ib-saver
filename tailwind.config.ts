@@ -1,5 +1,5 @@
-import {Config} from "tailwindcss";
-import {tailwindColors} from "./src/lib/tailwind/config";
+import { Config } from "tailwindcss";
+import { tailwindColors } from "./src/lib/tailwind/config";
 
 const config: Config = {
   content: ["./src/**/*.tsx"],
@@ -13,7 +13,6 @@ const config: Config = {
     colors: tailwindColors,
     fontFamily: {
       main: "zeitung-micro, sans-serif",
-      logo: "bungee, sans-serif",
     },
     boxShadow: {
       button: "2px 2px 0 0 #000",
@@ -24,4 +23,4 @@ const config: Config = {
   plugins: [],
 };
 
-export default config
+export default config;

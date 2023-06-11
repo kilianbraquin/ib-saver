@@ -48,7 +48,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: "IB Saver Logo",
-        type: "image/jpeg",
+        type: "image/png",
       },
     ],
     type: "website",

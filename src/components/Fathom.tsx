@@ -9,7 +9,6 @@ export const Fathom: FC = () => {
   useEffect(() => {
     FathomClient.load(process.env.NEXT_PUBLIC_FATHOM_SITE_ID, {
       includedDomains: [process.env.NEXT_PUBLIC_DOMAIN_NAME],
-      url: process.env.NEXT_PUBLIC_FATHOM_SCRIPT_URL,
       honorDNT: true,
       auto: false,
     });

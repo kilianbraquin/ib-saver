@@ -5,7 +5,12 @@ import Link from "next/link";
 import { FC, useMemo } from "react";
 
 const defaultLabel = "Qualité normale";
-const labels = ["Qualité faible", "Qualité moyenne", "Qualité haute", "Qualité max"];
+const labels = [
+  "Qualité faible",
+  "Qualité moyenne",
+  "Qualité haute",
+  "Qualité max",
+];
 
 export type MediaInfoProps = {
   media: TweetInfo["media"][number];
