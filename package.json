@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-pro": "^6.4.0",
-    "fathom-client": "^3.5.0",
     "next": "13.4.5",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",

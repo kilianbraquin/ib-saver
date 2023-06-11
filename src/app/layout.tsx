@@ -4,7 +4,6 @@ import { Footer } from "@/components/Footer";
 import { SearchBar } from "@/components/SearchBar";
 import { Header } from "@/components/Header";
 import { NextThemeProvider } from "@/components/NextThemeProvider";
-import { Fathom } from "@/components/Fathom";
 import { Metadata } from "next";
 import { tailwindColors } from "@/lib/tailwind/config";
 import { Zustand } from "@/components/Zustand";
@@ -16,7 +15,6 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => (
     </head>
     <body>
       <NextThemeProvider>
-        <Fathom />
         <Zustand />
         <div className="bg-side-light dark:bg-side-dark">
           <div className="pb-safe mx-auto flex min-h-screen max-w-3xl flex-col border-border-light bg-center-light dark:border-border-dark dark:bg-center-dark md:border-l md:border-r">

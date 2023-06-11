@@ -6,7 +6,6 @@ import BookmarkRegular from "@fontawesome/regular/bookmark.svg";
 import TrashCanClock from "@fontawesome/regular/trash-can-clock.svg";
 import BadgeCheck from "@fontawesome/solid/badge-check.svg";
 import BookmarkSolid from "@fontawesome/solid/bookmark.svg";
-import * as Fathom from "fathom-client";
 import Image from "next/image";
 import Link from "next/link";
 import { FC, useMemo } from "react";
@@ -35,10 +34,7 @@ export const TweetPresentation: FC<TweetPresentationProps> = ({
     tweetId ? ["tweet", tweetId] : null,
     () =>
       fetch(process.env.NEXT_PUBLIC_WORKER_URL + "?tweetId=" + tweetId).then(
-        (res) => {
-          Fathom.trackGoal("IZGPT0ZD", 0);
-          return res.json();
-        }
+        (res) => res.json()
       ),
     { shouldRetryOnError: false }
   );
