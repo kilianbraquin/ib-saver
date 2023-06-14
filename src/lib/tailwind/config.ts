@@ -13,4 +13,5 @@ export const tailwindColors = {
   "center-dark": "#18181B",
   "side-dark": "#000000",
   "border-dark": "rgba(63, 63, 70, 0.40)",
+  "danger-text": "#f43f5e",
 };
