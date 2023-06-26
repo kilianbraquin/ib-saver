@@ -15,8 +15,9 @@ export const AppPresentation: FC = () => {
       />
       <p className="ib-break-words z-10 inline-block p-4 text-main-text-light dark:text-main-text-dark">
         <span className="font-bold text-danger-text">
-          Depuis les changements d'API de Twitter, l'application n'est plus
-          fonctionnelle.
+          {
+            "Depuis les changements d'API de Twitter, l'application n'est plus fonctionnelle."
+          }
         </span>
         <br />
         Recherchez un tweet avec son lien
