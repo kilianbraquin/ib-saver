@@ -33,16 +33,16 @@ export const metadata: Metadata = {
   title: "IB Saver - Téléchargement de médias Twitter",
   description:
     "Recherchez vos tweets préférés et téléchargez leurs médias (images, vidéos) en qualité optimale",
-  metadataBase: new URL("https://www.ibsaver.com"),
+  metadataBase: new URL("https://ibsaver.kbraquin.com"),
   openGraph: {
     title: "IB Saver - Téléchargement de médias Twitter",
     description:
       "Recherchez vos tweets préférés et téléchargez leurs médias (images, vidéos) en qualité optimale",
-    url: "https://www.ibsaver.com",
+    url: "https://ibsaver.kbraquin.com",
     siteName: "IB Saver",
     images: [
       {
-        url: "https://www.ibsaver.com/images/ibsaver_illu.png",
+        url: "https://ibsaver.kbraquin.com/images/ibsaver_illu.png",
         width: 1200,
         height: 630,
         alt: "IB Saver Logo",
